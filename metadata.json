@@ -1,0 +1,5 @@
+{
+  "name": "Dynamic Card Reveal",
+  "description": "A visually stunning scroll-based interaction where a single profile card expands into a fan of three cards, inspired by modern dating app aesthetics.",
+  "requestFramePermissions": []
+}
