@@ -11,6 +11,19 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.*
+
+# Python / Backend runtime artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+backend/data/
+*.db
+*.db-wal
+*.db-shm
 
 # Editor directories and files
 .vscode/*

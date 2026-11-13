@@ -1,63 +1,74 @@
 import React from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Sparkles } from 'lucide-react';
 
-export interface Profile {
+export interface LinkedInShowcaseProfile {
   id: string;
   name: string;
-  age: number;
+  headline: string;
+  styleTag: string;
   imageUrl: string;
   isActive: boolean;
   isVerified: boolean;
-  distance?: string;
+  isAiDemo: boolean;
 }
 
 interface ProfileCardProps {
-  profile: Profile;
+  profile: LinkedInShowcaseProfile;
   className?: string;
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ profile, className = '' }) => {
   return (
-    <div 
-      className={`relative w-full h-full rounded-xl overflow-hidden shadow-2xl bg-zinc-800 ${className}`}
-      style={{
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
-      }}
+    <div
+      className={`relative w-full h-full rounded-2xl overflow-hidden bg-white border border-[#E0DFDC] shadow-[0_20px_45px_-15px_rgba(10,102,194,0.22)] ${className}`}
     >
-      {/* Image */}
-      <img 
-        src={profile.imageUrl} 
-        alt={profile.name}
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      <img
+        src={profile.imageUrl}
+        alt={`${profile.name} — ${profile.styleTag}`}
+        className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none"
       />
 
-      {/* Gradient Overlay - Darker at bottom for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent via-60% to-black/90" />
+      {/* AI Demo Example transparency badge */}
+      {profile.isAiDemo && (
+        <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/92 backdrop-blur text-[10px] font-bold uppercase tracking-wider text-[#0A66C2] border border-[#0A66C2]/20 shadow-sm">
+          <Sparkles className="w-2.5 h-2.5" />
+          AI Demo Example
+        </div>
+      )}
+
+      {/* Style preset tag */}
+      <div className="absolute top-3 right-3 z-10 hidden sm:inline-flex px-2.5 py-1 rounded-full bg-[#1D2226]/75 backdrop-blur text-[10px] font-semibold text-white">
+        {profile.styleTag}
+      </div>
+
+      {/* Bottom readability gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent via-55% to-[#0B192C]/92" />
 
       {/* Content */}
-      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex flex-col gap-0.5 md:gap-1 z-10">
-        
-        {/* Name Row */}
-        <div className="flex items-center gap-1.5 md:gap-2">
-          <h2 className="text-xl md:text-3xl font-extrabold text-white tracking-tight drop-shadow-md flex items-center gap-1.5 md:gap-2">
-            {profile.name} 
-            <span className="font-normal">{profile.age}</span>
-          </h2>
+      <div className="absolute bottom-3.5 left-3.5 right-3.5 md:bottom-5 md:left-5 md:right-5 flex flex-col gap-1 z-10">
+        <div className="flex items-center gap-1.5">
+          <h3 className="text-base md:text-xl font-extrabold text-white tracking-tight drop-shadow-sm truncate">
+            {profile.name}
+          </h3>
           {profile.isVerified && (
-            <CheckCircle2 className="w-5 h-5 md:w-7 md:h-7 text-white fill-blue-500" />
+            <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-white fill-[#0A66C2] shrink-0" />
           )}
         </div>
+        <p className="text-[11px] md:text-xs text-white/85 font-medium line-clamp-1">
+          {profile.headline}
+        </p>
 
-        {/* Status Row */}
-        <div className="flex items-center gap-1.5 md:gap-2 mt-0.5">
-          <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-[#4ADE80] border border-black/20" />
-          <span className="text-xs md:text-lg font-medium text-white/95 tracking-wide">Recently Active</span>
+        <div className="flex items-center gap-1.5 mt-0.5">
+          <span
+            className={`w-2 h-2 rounded-full ${
+              profile.isActive ? 'bg-[#4ADE80]' : 'bg-[#F59E0B]'
+            }`}
+          />
+          <span className="text-[10px] md:text-xs font-semibold text-white/90">
+            {profile.isActive ? 'isActive · Studio Ready' : 'Inactive Profile'}
+          </span>
         </div>
-        
       </div>
-      
-      {/* Top Gradient for subtle depth */}
-      <div className="absolute top-0 inset-x-0 h-20 md:h-32 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
     </div>
   );
 };
