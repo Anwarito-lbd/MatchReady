@@ -1,0 +1,37 @@
+{
+  "validationAvgMs": 5.27,
+  "styles": [
+    {
+      "id": "executive_navy",
+      "label": "Executive Navy Studio",
+      "processingMs": 590.03,
+      "inputContrastStd": 0.3446,
+      "outputContrastStd": 0.2653,
+      "meanLuminance": 0.5668
+    },
+    {
+      "id": "charcoal_founder",
+      "label": "Charcoal Founder Editorial",
+      "processingMs": 629.45,
+      "inputContrastStd": 0.3446,
+      "outputContrastStd": 0.27,
+      "meanLuminance": 0.519
+    },
+    {
+      "id": "daylight_consultant",
+      "label": "Daylight Consultant",
+      "processingMs": 627.9,
+      "inputContrastStd": 0.3446,
+      "outputContrastStd": 0.2813,
+      "meanLuminance": 0.6448
+    },
+    {
+      "id": "linkedin_signature",
+      "label": "LinkedIn Blue Signature",
+      "processingMs": 1216.8,
+      "inputContrastStd": 0.3446,
+      "outputContrastStd": 0.2706,
+      "meanLuminance": 0.5715
+    }
+  ]
+}
